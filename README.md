@@ -9,6 +9,10 @@
 * Spring Boot
 * MySQL
 * REST API
+* JUnit testing
+
+## Methodologies Hightlighted
+* Test Driven Development (TDD)
 
 ## Resources
 * [Deploy Spring Boot MySQL Application to Docker](https://www.javaguides.net/2022/12/deploy-spring-boot-mysql-application-to-docker.html) by Ramesh Fadatare
