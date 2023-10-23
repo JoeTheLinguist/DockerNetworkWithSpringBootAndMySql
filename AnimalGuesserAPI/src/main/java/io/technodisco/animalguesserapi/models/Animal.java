@@ -15,6 +15,10 @@ public class Animal {
 	private boolean hasFur;
 	private boolean isCarnivore;
 	
+	Animal() {
+		
+	}
+	
 	Animal(String name, String sound, int numLegs, boolean hasTail, boolean hasFur, boolean isCarnivore) {
 		this.name = name;
 		this.sound = sound;
