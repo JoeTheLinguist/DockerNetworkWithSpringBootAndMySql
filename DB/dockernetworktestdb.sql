@@ -1,63 +1,55 @@
--- MySQL dump 10.13  Distrib 5.7.34, for osx11.0 (x86_64)
---
--- Host: localhost    Database: dockernetworktestdb
--- ------------------------------------------------------
--- Server version	5.7.34
+-- MySQL Workbench Forward Engineering
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
---
--- Current Database: `dockernetworktestdb`
---
+-- -----------------------------------------------------
+-- Schema dockernetworktestdb
+-- -----------------------------------------------------
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dockernetworktestdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+-- -----------------------------------------------------
+-- Schema dockernetworktestdb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `dockernetworktestdb` DEFAULT CHARACTER SET utf8 ;
+USE `dockernetworktestdb` ;
 
-USE `dockernetworktestdb`;
+-- -----------------------------------------------------
+-- Table `dockernetworktestdb`.`animal`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dockernetworktestdb`.`animal` ;
 
---
--- Table structure for table `animal`
---
-
-DROP TABLE IF EXISTS `animal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `animal` (
-  `name` varchar(255) NOT NULL,
-  `sound` varchar(255) DEFAULT NULL,
-  `number_of_legs` int(11) DEFAULT NULL,
-  `has_tail` tinyint(4) DEFAULT NULL,
-  `has_fur` tinyint(4) DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `dockernetworktestdb`.`animal` (
+  `name` VARCHAR(255) NOT NULL,
+  `sound` VARCHAR(255) NULL,
+  `number_of_legs` INT NULL,
+  `has_tail` TINYINT NULL,
+  `has_fur` TINYINT NULL,
+  `is_carnivore` TINYINT NULL,
   PRIMARY KEY (`name`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
+ENGINE = InnoDB;
 
---
--- Dumping data for table `animal`
---
+SET SQL_MODE = '';
+DROP USER IF EXISTS dockernetworkuser;
+SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+CREATE USER 'dockernetworkuser' IDENTIFIED BY 'user';
 
-LOCK TABLES `animal` WRITE;
-/*!40000 ALTER TABLE `animal` DISABLE KEYS */;
-INSERT INTO `animal` VALUES ('tiger','rawr',4,1,1);
-/*!40000 ALTER TABLE `animal` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+GRANT SELECT, INSERT, TRIGGER ON TABLE `dockernetworktestdb`.* TO 'dockernetworkuser';
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `dockernetworktestdb`.* TO 'dockernetworkuser';
+GRANT SELECT ON TABLE `dockernetworktestdb`.* TO 'dockernetworkuser';
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- Dump completed on 2023-10-23 14:24:03
+-- -----------------------------------------------------
+-- Data for table `dockernetworktestdb`.`animal`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `dockernetworktestdb`;
+INSERT INTO `dockernetworktestdb`.`animal` (`name`, `sound`, `number_of_legs`, `has_tail`, `has_fur`, `is_carnivore`) VALUES ('tiger', 'rawr', 4, 1, 1, 1);
+INSERT INTO `dockernetworktestdb`.`animal` (`name`, `sound`, `number_of_legs`, `has_tail`, `has_fur`, `is_carnivore`) VALUES ('rabbit', 'thump', 4, 1, 1, 0);
+
+COMMIT;
+
