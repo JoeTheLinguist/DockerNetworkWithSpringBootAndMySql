@@ -11,7 +11,7 @@ import io.technodisco.animalguesserapi.models.Animal;
 import io.technodisco.animalguesserapi.repositories.AnimalRepository;
 
 @RestController
-@RequestMapping("/animal")
+@RequestMapping("/animals")
 public class AnimalController {
 	@Autowired
 	private AnimalRepository animalRepo;
