@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-focal
 
 # The purpose of the following two instructions is to run the application with user privileges rather than root privileges to help mitigate any privilege-related vulnerabilities.
 RUN addgroup animalguessergroup; adduser --ingroup animalguessergroup --disabled-password animalguesseruser
-USE animalguesseruser
+USER animalguesseruser
 
 WORKDIR /app
 
