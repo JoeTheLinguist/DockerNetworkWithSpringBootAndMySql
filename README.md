@@ -10,6 +10,7 @@
 * MySQL
 * REST API
 * JUnit testing
+* Gitlab
 
 ## Methodologies Hightlighted
 * Test Driven Development (TDD)
